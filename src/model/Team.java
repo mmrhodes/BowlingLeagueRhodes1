@@ -12,13 +12,13 @@ import javax.persistence.Table;
 public class Team{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "ID")
+	@Column(name = "Id")
 	private int teamId;
-	@Column(name = "TEAM NAME")
+	@Column(name = "teamName")
 	private String teamName;
-	@Column(name = "TEAM TYPE")
+	@Column(name = "teamType")
 	private String teamType;
-	@Column(name = "PREFERRED NIGHT")
+	@Column(name = "preferredNight")
 	private String preferredNight;
 	
 	
