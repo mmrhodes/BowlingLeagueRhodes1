@@ -7,17 +7,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
+import model.Player;
 
-import model.Team;
 
-
-public class TeamHelper {
-
+public class PlayerHelper {
 	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("BowlingLeagueTaffae");
 
-	public void insertTeam(Team toAdd) {
-		// TODO Auto-generated method stub
-
+	public void insertPlayer(Player toAdd) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(toAdd);
@@ -26,12 +22,15 @@ public class TeamHelper {
 
 	}
 
-	public Object showAllItems() {
+	public List<Player> viewAllPlayers() {
 		EntityManager em = emfactory.createEntityManager();
-		TypedQuery<Team> allResults = em.createQuery("select li from Team li", Team.class);
-		List<Team> allItems = allResults.getResultList();
+		TypedQuery<Player> allResults = em.createQuery("select li from Player li", Player.class);
+		List<Player> allItems = allResults.getResultList();
 		em.close();
 		return allItems;
 	}
-
+ 
+	public void deleteItem(Player itemToDelete) {
+		 	
+	}
 }
