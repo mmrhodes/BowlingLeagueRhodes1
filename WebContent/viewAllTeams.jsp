@@ -7,6 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<form method="post" action="EditTeamServlet">
+		<table>
+			<c:forEach items="${requestScope.allItems}" var="currentitem">
+				<tr>
+					<td><input type="radio" name="id" value="${currentitem.teamId}"></td>
+					<td>${currentitem.teamName}</td>
+					<td>${currentitem.teamType}</td>
+					<td>${currentitem.preferredNight}</td>
+					</tr>
+			</c:forEach>
+		</table>
+		<input type="submit" value="Delete Selected Team" name="doThisToItem">
+		<input type="submit" value="Add New Team" name="doThisToItem">
+		<input type="submit" value="Back To Menu" name="doThisToItem">
+	</form>
 </body>
 </html>

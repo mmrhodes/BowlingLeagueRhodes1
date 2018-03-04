@@ -26,12 +26,34 @@ public class TeamHelper {
 
 	}
 
-	public Object showAllItems() {
+	public Object viewAllTeams() {
 		EntityManager em = emfactory.createEntityManager();
 		TypedQuery<Team> allResults = em.createQuery("select li from Team li", Team.class);
 		List<Team> allItems = allResults.getResultList();
 		em.close();
 		return allItems;
 	}
+
+
+public Team searchForItemById(Integer tempId) {
+	// TODO Auto-generated method stub
+	EntityManager em = emfactory.createEntityManager();
+	em.getTransaction().begin();
+	Team foundTeam = em.find(Team.class, tempId);
+	em.close();
+	return foundTeam;
+}
+public void deleteItem(Team itemToDelete) {
+	// TODO Auto-generated method stub
+	EntityManager em = emfactory.createEntityManager();
+	em.getTransaction().begin();
+	TypedQuery<Team> typedQuery = em.createQuery("select t from Team t where t.teamId = :selectedId",Team.class);
+	typedQuery.setParameter("selectedId", itemToDelete.getTeamId());
+	typedQuery.setMaxResults(1);
+	Team result = typedQuery.getSingleResult();
+	em.remove(result);
+	em.getTransaction().commit();
+	em.close();	
+}
 
 }
