@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <form method="post" action="EditPlayerServlet">
 <table>
 <c:forEach items="${requestScope.allItems}" var="currentitem">
@@ -24,5 +25,6 @@
 <input type="submit" value="Add New Player" name="doThisToItem">
 <input type="submit" value="Back To Menu" name="doThisToItem">
 	</form>
+
 </body>
 </html>
