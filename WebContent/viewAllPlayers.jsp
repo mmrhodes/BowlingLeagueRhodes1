@@ -7,19 +7,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form method="post" action="ViewAllPlayersServlet">
-		<table>
-			<c:forEach items="${requestScope.allItems}" var="currentitem">
-				<tr>
-					<td><input type="radio" name="id" value="${currentitem.id}"></td>
-					<td>${currentitem.store}</td>
-					<td>${currentitem.item}</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<input type="submit" value="Edit Selected Team" name="doThisToItem">
-		<input type="submit" value="Delete Selected Team" name="doThisToItem">
-		
+
+<form method="post" action="EditPlayerServlet">
+<table>
+<c:forEach items="${requestScope.allItems}" var="currentitem">
+<tr>
+	<td><input type="radio" name="id" value="${currentitem.playerId}"></td>
+	<td>${currentitem.firstName}</td>
+	<td>${currentitem.lastName}</td>
+	<td>${currentitem.phoneNumber}</td>
+	<td>${currentitem.screenName}</td>
+	<td>${currentitem.teamId}</td>
+</tr>
+</c:forEach>
+</table>
+<input type="submit" value="Delete Selected Player" name="doThisToItem">
+<input type="submit" value="Add New Player" name="doThisToItem">
+<input type="submit" value="Back To Menu" name="doThisToItem">
 	</form>
 
 </body>

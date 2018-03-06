@@ -29,6 +29,10 @@ public class ViewAllPlayerServlet extends HttpServlet {
 		PlayerHelper dao = new PlayerHelper();
 		request.setAttribute("allItems", dao.viewAllPlayers());
 		
+		if (dao.viewAllPlayers().isEmpty()) {
+			request.setAttribute("allItems"," ");
+		}
+		
 		getServletContext().getRequestDispatcher("/viewAllPlayer.jsp").forward(request, response);
 	}
 

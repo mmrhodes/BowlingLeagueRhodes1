@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Player;
-import model.Team;
+
 
 /**
  * Servlet implementation class addPlayerServlet
  */
-@WebServlet("/addPlayerServlet")
+@WebServlet("/AddPlayerServlet")
 public class AddPlayerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

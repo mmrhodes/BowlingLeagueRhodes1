@@ -29,6 +29,16 @@ private String screenName;
 	public Player() {
 		super();
 	}
+
+	public Player(int playerId, String firstName, String lastName, String phoneNumber, String screenName, int teamId) {
+		super();
+		this.playerId = playerId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.screenName = screenName;
+		this.teamId = teamId;
+	}
 	public Player(String firstName, String lastName, String phoneNumber, String screenName, int teamId) {
 		super();
 		this.firstName = firstName;
