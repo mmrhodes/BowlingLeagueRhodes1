@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Team;
 import model.Player;
 
 
@@ -29,15 +30,26 @@ public class AddPlayerServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String phoneNumber = request.getParameter("phoneNumber");
-		String screenName = request.getParameter("screenName");
-		int teamId = Integer.parseInt(request.getParameter("teamId"));
+		String screenName = request.getParameter("screenName");		
+		String teamName = request.getParameter("teamName");
+		Team team;
+		TeamHelper th = new TeamHelper();
 		
-		Player np = new Player(firstName, lastName, phoneNumber, screenName, teamId);
 		PlayerHelper ph = new PlayerHelper();
+		if(th.searchForTeamByName(teamName)== null){
+			team = new Team(teamName);
+			th.insertTeam(team);
+		} else {
+			team = th.searchForTeamByName(teamName);
+		}
+		
+		
+		Player np = new Player(firstName, lastName, phoneNumber, screenName, team);
+		
 		ph.insertPlayer(np);
 		
 		getServletContext().getRequestDispatcher("/index.html").forward(request, response);

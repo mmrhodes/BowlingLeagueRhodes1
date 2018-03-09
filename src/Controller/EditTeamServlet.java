@@ -37,15 +37,17 @@ public class EditTeamServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String act = request.getParameter("doThisToItem");
-		TeamHelper dao = new TeamHelper();
+		String act = request.getParameter("doThisToTeam");
+		TeamHelper th = new TeamHelper();
+		PlayerHelper ph = new PlayerHelper();
 		if (act == null) {
 			//no button has been selected
-			getServletContext().getRequestDispatcher("/viewAllTeamsServlet").forward(request, response);
+			getServletContext().getRequestDispatcher("/ViewAllTeamsServlet").forward(request, response);
 		} else if (act.equals("Delete Selected Team")) {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
-			Team itemToDelete = dao.searchForItemById(tempId);
-			dao.deleteItem(itemToDelete);
+			Team teamToDelete = th.searchForTeamById(tempId);
+			ph.deleteAllPlayersOnTeam(teamToDelete);
+			th.deleteTeam(teamToDelete);
 
 			getServletContext().getRequestDispatcher("/ViewAllTeamsServlet").forward(request, response);
 		} 

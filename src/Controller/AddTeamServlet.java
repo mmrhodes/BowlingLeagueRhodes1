@@ -33,9 +33,9 @@ public class AddTeamServlet extends HttpServlet {
 		String teamType = request.getParameter("teamType");
 		String preferredNight = request.getParameter("preferredNight");
 		
-		Team nt = new Team(teamName, teamType, preferredNight);
-		TeamHelper dao = new TeamHelper();
-		dao.insertTeam(nt);
+		TeamHelper th = new TeamHelper();
+		Team nt = new Team(teamName, teamType, preferredNight);		
+		th.insertTeam(nt);
 		
 		getServletContext().getRequestDispatcher("/AddTeam.html").forward(request, response);
 	}
