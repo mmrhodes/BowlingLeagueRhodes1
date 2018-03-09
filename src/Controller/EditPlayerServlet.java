@@ -37,15 +37,15 @@ public class EditPlayerServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String act = request.getParameter("doThisToItem");
-		PlayerHelper dao = new PlayerHelper();
+		String act = request.getParameter("doThisToPlayer");
+		PlayerHelper ph = new PlayerHelper();
 		if (act == null) {
 			//no button has been selected
 			getServletContext().getRequestDispatcher("/ViewAllPlayerServlet").forward(request, response);
 		} else if (act.equals("Delete Selected Player")) {
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
-			Player itemToDelete = dao.searchForItemById(tempId);
-			dao.deleteItem(itemToDelete);
+			Player playerToDelete = ph.searchForPlayerById(tempId);
+			ph.deletePlayer(playerToDelete);
 			getServletContext().getRequestDispatcher("/ViewAllPlayerServlet").forward(request, response);
 		} 
 		else if (act.equals("Add New Player")) {

@@ -27,6 +27,12 @@ public class Team{
 	}
 	
 	
+	public Team(String name) {
+		super();
+		this.setTeamName(name);
+	}
+
+
 	public Team(String teamName, String teamType, String preferredNight) {
 		super();
 		this.teamName = teamName;
